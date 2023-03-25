@@ -58,6 +58,16 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
       'Expected ' + actual + ' to be ' + expected,
   ),
 
+  '#eqJson':: docstring('eqJson', 'JSON object equality with pretty print'),
+  eqJson: self.new(
+    function(actual, expected) actual == expected,
+    function(actual, expected)
+      '\nActual:\n'
+      + std.manifestJson(actual)
+      + '\nExpected:\n'
+      + std.manifestJson(expected),
+  ),
+
   '#neq':: docstring('neq', 'value inequality'),
   neq: self.new(
     function(actual, expected) actual != expected,

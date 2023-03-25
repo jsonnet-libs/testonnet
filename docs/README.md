@@ -34,6 +34,7 @@ test.new(std.thisFile)
   * [`fn new(name, test)`](#fn-casenew)
 * [`obj expect`](#obj-expect)
   * [`fn eq(actual, expected)`](#fn-expecteq)
+  * [`fn eqJson(actual, expected)`](#fn-expecteqjson)
   * [`fn ge(actual, expected)`](#fn-expectge)
   * [`fn gt(actual, expected)`](#fn-expectgt)
   * [`fn le(actual, expected)`](#fn-expectle)
@@ -58,8 +59,8 @@ suite.
 Output on success:
 
 ```
-$ jsonnet -J path/to/testonnet test.jsonnet
-TRACE: path/to/testonnet/main.libsonnet:74 Testing suite test.jsonnet
+$ jsonnet -J vendor/ test.jsonnet
+TRACE: testonnet/main.libsonnet:74 Testing suite test.jsonnet
 {
    "verify": "Passed 3 test cases"
 }
@@ -67,16 +68,16 @@ TRACE: path/to/testonnet/main.libsonnet:74 Testing suite test.jsonnet
 
 Output on failure:
 ```
-$ jsonnet -J path/to/testonnet test.jsonnet
-TRACE: path/to/testonnet/main.libsonnet:74 Testing suite test.jsonnet
+$ jsonnet -J vendor/ test.jsonnet
+TRACE: testonnet/main.libsonnet:74 Testing suite test.jsonnet
 RUNTIME ERROR: Failed 3/3 test cases:
 testFoo: Expected 1 to be 2
 testBar: Expected 1 to satisfy the function
 testBaz: Expected 1 to satisfy the condition that the value is between 2 and 3
-      path/to/testonnet/main.libsonnet:(78:11)-(84:13)	thunk from <object <anonymous>>
-      path/to/testonnet/main.libsonnet:(74:7)-(87:8)	object <anonymous>
-      Field "verify"	
-      During manifestation	
+      testonnet/main.libsonnet:(78:11)-(84:13)	thunk from <object <anonymous>>
+      testonnet/main.libsonnet:(74:7)-(87:8)	object <anonymous>
+      Field "verify"
+      During manifestation
 ```
 
 
@@ -102,6 +103,19 @@ eq(actual, expected)
 ```
 
 `eq` test for value equality
+
+Arguments:
+* `actual`: (any) The actual value.
+* `expected`: (any) The expected value to satisfy this test.
+
+
+#### fn expect.eqJson
+
+```ts
+eqJson(actual, expected)
+```
+
+`eqJson` test for JSON object equality with pretty print
 
 Arguments:
 * `actual`: (any) The actual value.
@@ -201,4 +215,3 @@ Arguments:
     Returns boolean if `actual` satisfies `expected`.
 * `message`: (fuction(actual, expected) string)
     Returns error message `actual` satisfies `expected`.
-
