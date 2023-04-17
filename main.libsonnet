@@ -53,8 +53,8 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
       testBaz: Expected 1 to satisfy the condition that the value is between 2 and 3
             testonnet/main.libsonnet:(78:11)-(84:13)	thunk from <object <anonymous>>
             testonnet/main.libsonnet:(74:7)-(87:8)	object <anonymous>
-            Field "verify"	
-            During manifestation	
+            Field "verify"
+            During manifestation
       ```
     |||,
     args=[

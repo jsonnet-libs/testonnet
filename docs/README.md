@@ -34,6 +34,7 @@ test.new(std.thisFile)
   * [`fn new(name, test)`](#fn-casenew)
 * [`obj expect`](#obj-expect)
   * [`fn eq(actual, expected)`](#fn-expecteq)
+  * [`fn eqDiff(actual, expected)`](#fn-expecteqdiff)
   * [`fn eqJson(actual, expected)`](#fn-expecteqjson)
   * [`fn ge(actual, expected)`](#fn-expectge)
   * [`fn gt(actual, expected)`](#fn-expectgt)
@@ -103,6 +104,19 @@ eq(actual, expected)
 ```
 
 `eq` test for value equality
+
+Arguments:
+* `actual`: (any) The actual value.
+* `expected`: (any) The expected value to satisfy this test.
+
+
+#### fn expect.eqDiff
+
+```ts
+eqDiff(actual, expected)
+```
+
+`eqDiff` test for value equality with JSON diff-like output
 
 Arguments:
 * `actual`: (any) The actual value.
@@ -215,3 +229,4 @@ Arguments:
     Returns boolean if `actual` satisfies `expected`.
 * `message`: (fuction(actual, expected) string)
     Returns error message `actual` satisfies `expected`.
+
