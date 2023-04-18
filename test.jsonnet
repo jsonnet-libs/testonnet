@@ -11,3 +11,18 @@ test.new(std.thisFile)
     //expected=3628800
   )
 )
++ test.case.new(
+  name='Diff',
+  test=test.expect.eqDiff(
+    actual={
+      same: 'same',
+      change: 'this',
+      remove: 'removed',
+    },
+    expected={
+      same: 'same',
+      change: 'changed',
+      add: 'added',
+    }
+  )
+)

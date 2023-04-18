@@ -1,4 +1,5 @@
 local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
+local xtd = import 'github.com/jsonnet-libs/xtd/main.libsonnet';
 
 {
   '#new':: d.fn(
@@ -67,6 +68,15 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
       + '\nExpected:\n'
       + std.manifestJson(expected),
   ),
+
+  '#eqDiff':: docstring('eqDiff', 'value equality with JSON diff-like output'),
+  eqDiff: self.new(
+    function(actual, expected) actual == expected,
+    function(actual, expected)
+      '\nThe diff between expected and actual:\n'
+      + std.manifestJson(xtd.inspect.diff(expected, actual))
+  ),
+
 
   '#neq':: docstring('neq', 'value inequality'),
   neq: self.new(
